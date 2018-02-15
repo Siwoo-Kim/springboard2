@@ -1,9 +1,6 @@
 package com.springboard.project.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -12,6 +9,7 @@ import java.time.LocalDate;
 
 @Entity @Table(name="sb_journal")
 @Getter @Setter @ToString @Builder
+@NoArgsConstructor @AllArgsConstructor
 @SequenceGenerator(
         name = "spring_journal_generator",
         initialValue = 1,
@@ -26,11 +24,11 @@ public class Journal {
     private Long id;
 
     @NotNull
-    @Length(min=5,max=40)
+    @Length(min=5,max=80)
     private String title;
 
     @NotNull
-    @Length(min=10,max=400)
+    @Length(min=10,max=800)
     private String text;
 
     @NotNull

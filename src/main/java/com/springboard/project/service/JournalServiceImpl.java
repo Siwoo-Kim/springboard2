@@ -6,10 +6,9 @@ import com.springboard.project.validator.JournalValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.BindingResultUtils;
 import org.springframework.validation.Errors;
+
+import java.util.List;
 
 @Service @Transactional(readOnly = true)
 public class JournalServiceImpl implements JournalService {
@@ -19,6 +18,8 @@ public class JournalServiceImpl implements JournalService {
 
     @Override @Transactional(readOnly = false)
     public Journal post(Journal journal, Errors errors) {
+
+        journalValidator.validateNew(journal,errors);
         boolean valid = !errors.hasErrors();
         if(valid){ journalRepository.save(journal); };
         return journal;
@@ -33,7 +34,7 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public Journal getJournal(Long id) {
         journalValidator.validateId(id);
-        return null;
+        return journalRepository.findById(id).get();
     }
 
     @Override
@@ -42,7 +43,7 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
-    public Journal getAll() {
-        return null;
+    public List<Journal> getJournals() {
+        return journalRepository.findAll();
     }
 }
