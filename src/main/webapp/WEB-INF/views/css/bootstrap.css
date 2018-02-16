@@ -4548,7 +4548,7 @@ tbody.collapse.show {
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
-.card-deck {
+.main-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4558,12 +4558,12 @@ tbody.collapse.show {
   flex-direction: column;
 }
 
-.card-deck .card {
+.main-wrapper .card {
   margin-bottom: 15px;
 }
 
 @media (min-width: 576px) {
-  .card-deck {
+  .main-wrapper {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-flow: row wrap;
@@ -4571,7 +4571,7 @@ tbody.collapse.show {
     margin-right: -15px;
     margin-left: -15px;
   }
-  .card-deck .card {
+  .main-wrapper .card {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
