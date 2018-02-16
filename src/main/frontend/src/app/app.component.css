@@ -7,10 +7,6 @@
 }
 
 .container {
+  min-height: 750px;
   max-width: 960px;
 }
-
-.card-deck .card {
-  min-width: 220px;
-}
-

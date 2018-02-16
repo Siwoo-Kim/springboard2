@@ -1,0 +1,20 @@
+
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+mat-toolbar{
+  color: #4c4c4c;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 5px 0 15px 0;
+}
+.home-section{
+  color: #555;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 1.4;
+}

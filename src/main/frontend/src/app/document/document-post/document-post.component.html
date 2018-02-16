@@ -1,0 +1,44 @@
+
+
+<div class="post-wrapper card">
+  <div class="post-header-wrapper" color="primary">
+    <mat-toolbar color="primary"><h2><i class="fa fa-crop"></i> Post Form</h2></mat-toolbar>
+    <p class="text-muted">
+      description : blur blur
+      : blur blur
+      : blur blur
+    </p>
+  </div>
+
+  <div class="post-from-wrapper card-body">
+    <form class="form-group">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter title"
+          class="form-control"
+        >
+      </mat-form-field>
+      <hr>
+      <mat-form-field class="post-text-area">
+        <textarea
+          matInput
+          rows="16"
+          type="text"
+          placeholder="Leave a text..."
+        ></textarea>
+      </mat-form-field>
+      <hr>
+      <button
+        color="primary"
+        type="submit"
+        mat-raised-button
+        class="btn">Post!</button>
+      <button
+        type="reset"
+        mat-raised-button
+        class="btn">Reset</button>
+    </form>
+  </div>
+</div>

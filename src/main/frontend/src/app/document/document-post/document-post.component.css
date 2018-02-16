@@ -1,0 +1,23 @@
+
+
+.post-header-wrapper {
+  text-align: center;
+}
+
+.post-header-wrapper p{
+  font-size: 1.2em;
+}
+
+
+mat-form-field{
+  width: 70%;
+}
+
+.post-from-wrapper {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.post-text-area{
+  border-bottom: 2px solid #4143ba;
+}
