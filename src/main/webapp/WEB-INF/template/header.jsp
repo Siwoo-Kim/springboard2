@@ -34,14 +34,15 @@
     <link href="${mainUrl}" rel="stylesheet">
     <%--=================================================================================--%>
     <!-- Bootstrap core CSS -->
-    <link href="${fontawesomeUrl}" rel="stylesheet" >
+    <%--<script href="${fontawesomeUrl}" rel="stylesheet" ></script>--%>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link href="${bootstrapCssUrl}" rel="stylesheet">
 
 </head>
 
 <body>
-<div class="nav-wrapper d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 text-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Springboot Project</h5>
+<div class="nav-wrapper d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 text-white border-bottom box-shadow fixed-top">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><i class="fa fa-reddit"></i>&nbsp;Springboot Project</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 btn btn-outline-light" href="#">Home</a>
         <a class="p-2 btn btn-outline-light" href="#">Journal</a>

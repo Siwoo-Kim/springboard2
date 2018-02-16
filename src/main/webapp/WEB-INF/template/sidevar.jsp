@@ -10,7 +10,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<div class="col-2 side-wrapper">
+<div class="col-2 bg-faded side-wrapper">
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-list-ul"></i> Manage Product</a>

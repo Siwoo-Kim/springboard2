@@ -1,0 +1,18 @@
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+:host {
+  font-family: 'Nanum Pen Script', cursiv;
+  font-size: 1.5em;
+}
+
+h1{
+  font-size: 1.8em;
+}
+
+
+.header-wrapper{
+  background-color: #4143ba;
+}

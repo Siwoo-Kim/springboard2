@@ -1,6 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: sw
+  Date: 2018-02-15
+  Time: 오후 8:37
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: sw
   Date: 2018-02-14
   Time: 오후 8:12
   To change this template use File | Settings | File Templates.
@@ -10,10 +17,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-    <jsp:include page="/WEB-INF/template/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/template/header.jsp"></jsp:include>
 
 <div class="header-wrapper px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Project</h1>
+    <h1 class="display-4">Post your document</h1>
     <p class="lead">Made by SiWoo</p>
 </div>
 
@@ -22,6 +29,15 @@
 <div class="container-fluid">
     <jsp:include page="/WEB-INF/template/sidevar.jsp"></jsp:include>
     <div class="col-10 main-wrapper">
+        <form class="form-group">
+            <div class="form-group">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter title"
+                >
+            </div>
+        </form>
 
     </div>
 </div>
