@@ -41,7 +41,7 @@ public class DocumentServiceImplTest {
         documentService.post(document2,errors);
 
         assertThat(errors.hasErrors(),is(true));
-        assertThat("New journal cannot exceed 0",errors.getFieldError("hit").getCode(),is("errors.notValid.hit.journal"));
+        assertThat("New journal cannot exceed 0",errors.getFieldError("hit").getCode(),is("errors.new.notValid.hit.document"));
     }
 
     @Test(expected = DocumentNotFoundException.class)

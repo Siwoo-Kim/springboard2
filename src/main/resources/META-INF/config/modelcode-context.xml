@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <util:list id="modelCodes">
+        <list>
+            <ref bean="homeModel"></ref>
+            <ref bean="documentModel"></ref>
+            <ref bean="userModel"></ref>
+        </list>
+    </util:list>
+
+    <!-- this bean is for meta data for application -->
+    <bean class="com.springboard.project.domain.ModelCode"
+          id="homeModel"
+          p:code="mc-001"
+          p:description="Work in a single document with teammates or people outside your company. This feature is available for all and free!"
+          p:name="Home" />
+
+    <bean class="com.springboard.project.domain.ModelCode"
+          id="documentModel"
+          p:code="mc-002"
+          p:description="With the Application document, you can create and format online documents. Work alone or collaborate with others, too.!"
+          p:name="Document" />
+
+    <bean class="com.springboard.project.domain.ModelCode"
+          id="userModel"
+          p:code="mc-003"
+          p:description="You can make a friend in the application, and share your document with them!"
+          p:name="User" />
+
+
+
+
+</beans>

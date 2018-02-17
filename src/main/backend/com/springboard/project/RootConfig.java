@@ -7,10 +7,7 @@ import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 
@@ -18,6 +15,7 @@ import java.util.Locale;
 
 @Log
 @Configuration
+@ImportResource(locations = "classpath:/META-INF/config/modelcode-context.xml")
 public class RootConfig {
 
     @Bean
