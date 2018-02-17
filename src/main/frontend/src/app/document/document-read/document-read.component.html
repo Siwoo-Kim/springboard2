@@ -1,3 +1,27 @@
-<p>
-  document-read works!
-</p>
+
+
+<div class="document-read-wrapper">
+  <div class="read-headline">
+    <p><i class="fa fa-inbox"></i> Your Document</p>
+  </div>
+  <div class="read-sub-headline">
+    <h2 class="document-title"> {{ document.title }}</h2>
+    <div class="row document-metadata">
+      <div class="col-3 document-data">
+        <mat-chip color="primary">Writer : {{ document.writer }}</mat-chip>
+      </div>
+      <div class="col-4 document-data">
+        <mat-chip color="primary">Post Date: {{ document.postDate.toLocaleDateString() }}</mat-chip>
+      </div>
+      <div class="col-3 document-data">
+        <mat-chip color="primary">Raiting: <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></mat-chip>
+      </div>
+    </div>
+  </div>
+
+  <div class="read-body">
+    <p>
+      {{ document.text }}
+    </p>
+  </div>
+</div>

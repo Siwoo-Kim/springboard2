@@ -2,7 +2,7 @@ import * as format from "date-fns/format";
 import * as parse from "date-fns/parse";
 
 export class DateFormatter {
-  static formatLocalDate = 'YYYY/MM/DD';
+  static formatLocalDate = 'YYYY-MM-DD';
   static formatLocalDateTime = 'YYYY/MM/DD HH:mm:ss';
 
   static getlocalDateString(date: Date){

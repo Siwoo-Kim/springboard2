@@ -24,6 +24,9 @@ export class DocumentService {
     });
   }
 
+  documentById(documentId:number): Observable<Document>{
+    return null;
+  }
 
 }
 

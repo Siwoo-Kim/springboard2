@@ -1,0 +1,48 @@
+
+.document-read-wrapper{
+  padding-bottom: 55px;
+}
+
+.read-headline{
+  display: inline-block;
+  border-top: 3px solid #4143ba;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 12px;
+  text-transform: uppercase;
+  padding-top: 8px;
+  font-family: 'Nanum Pen Script', cursiv
+}
+
+.read-sub-headline .document-title{
+  font-size: 24px;
+  margin-bottom: 12px;
+  line-height: 35px;
+  color: #34302d;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.document-metadata{
+  padding-top: 22px;
+}
+
+.document-data{
+  display: inline-block;
+  margin: 2px 15px 0 0;
+  font-size: 15px;
+  line-height: 12px;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.document-data mat-chip {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #4143ba;
+}
+
+
+.read-body{
+  font-size: 22px;
+  font-family: 'Roboto Mono', monospace;
+  padding-top: 45px;
+}
