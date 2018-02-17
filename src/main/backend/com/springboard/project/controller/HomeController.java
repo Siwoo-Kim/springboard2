@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Log
 @Controller
-@RequestMapping({"/","/home","/index"})
+@RequestMapping({"/","/home"})
 public class HomeController {
 
     @Value("${view.home}") private String homeView;

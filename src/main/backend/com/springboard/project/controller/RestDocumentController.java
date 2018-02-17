@@ -1,13 +1,16 @@
 package com.springboard.project.controller;
 
 import com.springboard.project.domain.Document;
+import com.springboard.project.domain.ErrorCode;
 import com.springboard.project.service.DocumentService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
+import org.apache.tomcat.jni.Local;
 import org.dom4j.DocumentException;
+import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.validation.BindingResult;
@@ -15,10 +18,13 @@ import org.springframework.validation.BindingResultUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Log
 @RestController
@@ -27,6 +33,7 @@ public class RestDocumentController {
 
     @Autowired
     DocumentService documentService;
+    @Inject Provider<ErrorCode> errorCodeProvider;
 
     @GetMapping("/{id}")
     public Document getDocument(@PathVariable Long id){
@@ -38,40 +45,31 @@ public class RestDocumentController {
         return documentService.getDocuments();
     }
 
-    @NoArgsConstructor
-    @AllArgsConstructor @Getter @Setter
-    public static class ErrorCode{
-        String errorCode;
-        String message;
-
-    }
-
     @PostMapping
     public Object postDocument(
             @Valid @RequestBody Document document,
             BindingResult bindingResult,
-            HttpServletResponse response
+            HttpServletResponse response,
+            Locale locale
     ){
         Document savedDocument = documentService.post(document,bindingResult);
         if(bindingResult.hasErrors()){
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            List<ErrorCode> errorCodes = new ArrayList<>();
-
-            bindingResult.getAllErrors().forEach(error -> {
-                errorCodes.add(new ErrorCode(error.getCode(),error.getDefaultMessage()));
-            });
-
-            return errorCodes;
+            return handleErrors(bindingResult,locale);
         }
 
         return savedDocument;
     }
-/*
-    public List<ErrorCode> handleErrors(Errors errors){
+
+    public List<ErrorCode> handleErrors(Errors errors,Locale locale) {
         List<ErrorCode> errorCodes = new ArrayList<>();
         errors.getAllErrors().forEach(error -> {
-            errorCodes.add(error.getCode(),error.getDefaultMessage());
+            ErrorCode errorCode = errorCodeProvider.get();
+            errorCode.setLocale(locale);
+            errorCode.setErrorCode(error.getCode());
+            errorCode.setMessage(error.getDefaultMessage());
+            errorCodes.add(errorCode);
         });
         return errorCodes;
-    }*/
+    }
 }

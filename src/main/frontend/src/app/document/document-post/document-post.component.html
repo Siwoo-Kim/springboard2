@@ -11,14 +11,23 @@
   </div>
 
   <div class="post-from-wrapper card-body">
-    <form class="form-group">
+    <form
+      class="form-group"
+      [formGroup]="formGroup"
+      (ngSubmit)="onSubmit()"
+      (ngResult)="onReset()"
+    >
       <mat-form-field>
         <input
           matInput
           type="text"
           placeholder="Enter title"
           class="form-control"
+          [formControlName]="'title'"
         >
+        <mat-error
+          *ngIf="formGroup.controls['title'].invalid && formGroup.controls['title'].touched"
+        >Please enter more than 5 letters</mat-error>
       </mat-form-field>
       <hr>
       <mat-form-field class="post-text-area">
@@ -27,17 +36,23 @@
           rows="16"
           type="text"
           placeholder="Leave a text..."
+          [formControlName]="'text'"
         ></textarea>
+        <mat-error
+          *ngIf="formGroup.controls['text'].invalid && formGroup.controls['text'].touched"
+        >Please enter more than 10 letters</mat-error>
       </mat-form-field>
       <hr>
       <button
         color="primary"
         type="submit"
         mat-raised-button
+        [disabled]="formGroup.invalid"
         class="btn">Post!</button>
       <button
         type="reset"
         mat-raised-button
+        (click)="onReset()"
         class="btn">Reset</button>
     </form>
   </div>

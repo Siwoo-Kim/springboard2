@@ -13,11 +13,16 @@ mat-form-field{
   width: 70%;
 }
 
+mat-error{
+  margin-bottom: 15px;
+}
+
 .post-from-wrapper {
   text-align: center;
   font-size: 1.4em;
 }
 
 .post-text-area{
-  border-bottom: 2px solid #4143ba;
+  padding-bottom: 20px;
+  border-bottom: 4px solid #ececec;
 }
