@@ -22,7 +22,7 @@ import java.util.Locale;
 public class RestModelCodeController {
 
     @Autowired ModelCodeService modelCodeService;
-    @Inject Provider<ErrorCode> errorCodeProvider;
+    @Inject private Provider<ErrorCode> errorCodeProvider;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

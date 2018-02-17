@@ -10,16 +10,19 @@
     <a
       class="p-2 text-white"
       [routerLink]="['/home']"
+      (click)="onChangeModel('home')"
     >Home</a>
     <a
       class="p-2 text-white"
       [routerLink]="['/document/post']"
+      (click)="onChangeModel('document')"
     >Document</a>
   </nav>
   <a class="btn btn-outline-primary"
      color="primary"
      mat-raised-button
-     href="#">Sign up</a>
+     (click)="onChangeModel('user')"
+  >Sign up</a>
   <form class="form-inline ml-2 text-white">
       <input
         type="text"

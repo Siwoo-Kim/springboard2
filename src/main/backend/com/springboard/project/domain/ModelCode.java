@@ -24,6 +24,7 @@ public class ModelCode {
     @Builder.Default
     private LocalDate createDate = LocalDate.now();
 
+    @Builder.Default
     private LocalDate lastUpdatedContent;
 
 

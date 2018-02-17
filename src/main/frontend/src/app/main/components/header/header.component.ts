@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ModelCodeService} from "../../../service/model-code.service";
+import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  constructor(private modelCodeService: ModelCodeService) {
 
-  ngOnInit() {
   }
 
+  onChangeModel(name: string) {
+    this.modelCodeService.codeName = name;
+  }
 }

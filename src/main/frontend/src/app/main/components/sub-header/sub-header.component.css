@@ -6,3 +6,8 @@
 .sub-header{
   border-bottom: 1px solid #d3d3d3;
 }
+
+.lead{
+  font-family: 'Nanum Pen Script', cursiv;
+  font-size: 1.6em;
+}

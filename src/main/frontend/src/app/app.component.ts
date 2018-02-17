@@ -13,4 +13,5 @@ export class AppComponent {
     /*toastmanager config*/
     this.toastr.setRootViewContainerRef(vRef);
   }
+
 }

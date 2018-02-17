@@ -1,7 +1,15 @@
 
-<div class="col-12 sub-header mb-3">
+<div class="col-12 sub-header mb-3 ">
   <div class="sub-header-wrapper px-3 py-3 pt-1 pb-md-4 mx-auto text-center">
-    <h1 class="display-4"> <i class="fa fa-home"></i> {{ pageName }}</h1>
-    <p class="lead">{{ pageDescription }}</p>
+    <h1
+      class="display-4">
+      <ng-container [ngSwitch]="modelCode.name">
+        <i class="fa fa-home" *ngSwitchCase="'Home'" ></i>
+        <i class="fa fa-file-text-o" *ngSwitchCase="'Document'" ></i>
+        <i class="fa fa-home" *ngSwitchDefault></i>
+      </ng-container>
+      {{ modelCode.name }}
+    </h1>
+    <p class="lead text-muted">{{ modelCode.description }}</p>
   </div>
 </div>

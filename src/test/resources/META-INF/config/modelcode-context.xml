@@ -12,32 +12,40 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <util:map id="modelCodeMap">
-        <entry key="#{homeModel.code}" value-ref="homeModel"></entry>
-        <entry key="#{documentModel.code}" value-ref="documentModel"></entry>
-        <entry key="#{userModel.code}" value-ref="userModel"></entry>
-    </util:map>
+    <util:list id="modelCodes">
+        <list>
+            <ref bean="homeModel"></ref>
+            <ref bean="documentModel"></ref>
+            <ref bean="userModel"></ref>
+        </list>
+    </util:list>
 
     <!-- this bean is for meta data for application -->
     <bean class="com.springboard.project.domain.ModelCode"
           id="homeModel"
           p:code="mc-001"
           p:description="Work in a single document with teammates or people outside your company. This feature is available for all and free!"
-          p:name="Home" />
+          p:name="Home"
+          p:createDate-ref="createDate"
+    />
 
     <bean class="com.springboard.project.domain.ModelCode"
           id="documentModel"
           p:code="mc-002"
           p:description="With the Application document, you can create and format online documents. Work alone or collaborate with others, too.!"
-          p:name="Document" />
+          p:name="Document"
+          p:createDate-ref="createDate"
+    />
 
     <bean class="com.springboard.project.domain.ModelCode"
           id="userModel"
           p:code="mc-003"
           p:description="You can make a friend in the application, and share your document with them!"
-          p:name="User" />
+          p:name="Code"
+          p:createDate-ref="createDate"
+    />
 
-
+    <bean id="createDate" class="java.time.LocalDate" factory-method="now"></bean>
 
 
 </beans>
