@@ -1,8 +1,6 @@
 package com.springboard.project.repository;
 
 import com.springboard.project.domain.ModelCode;
-import com.springboard.project.service.InMemoryModelCodeRepository;
-import com.springboard.project.service.ModelCodeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

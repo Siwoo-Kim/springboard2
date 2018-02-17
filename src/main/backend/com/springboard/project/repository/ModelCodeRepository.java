@@ -1,4 +1,4 @@
-package com.springboard.project.service;
+package com.springboard.project.repository;
 
 import com.springboard.project.domain.ModelCode;
 import org.springframework.ui.Model;

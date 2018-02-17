@@ -16,7 +16,7 @@ public class DocumentValidatorImpl implements DocumentValidator {
     @Override
     public void validateId(Long id) {
         if(!documentRepository.existsById(id)){
-            throw new DocumentNotFoundException("Document[id:"+id+"] not found","error.notFound.document.id");
+            throw new DocumentNotFoundException("Document[id:"+id+"] not found", "errors.notFound.document.id");
         }
     }
 

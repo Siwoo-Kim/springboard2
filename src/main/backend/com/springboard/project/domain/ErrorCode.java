@@ -29,6 +29,7 @@ public class ErrorCode implements MessageSourceAware {
         return message;
     }
 
+
     @Override
     public void setMessageSource(MessageSource messageSource) {
         this.messageSource = messageSource;
