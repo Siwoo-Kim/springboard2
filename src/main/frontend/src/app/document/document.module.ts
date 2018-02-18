@@ -5,6 +5,8 @@ import {DocumentPostComponent} from './document-post/document-post.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {DocumentPostSuccessComponent} from "./document-post-success/document-post-success.component";
 import {DocumentReadComponent} from "./document-read/document-read.component";
+import {MainBoardComponent} from "../main/components/main-board/main-board.component";
+import {MainModule} from "../main/main.module";
 
 const documentComponents = [
   DocumentPostComponent,
@@ -14,9 +16,13 @@ const documentComponents = [
 
 @NgModule({
   imports: [
+    /* angular modules */
     CommonModule,
-    MatModuleModule,
     ReactiveFormsModule,
+
+    /*app modules*/
+    MainModule,
+    MatModuleModule,
   ],
   declarations: documentComponents,
   exports: documentComponents,

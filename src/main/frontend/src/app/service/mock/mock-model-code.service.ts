@@ -49,7 +49,7 @@ export class MockModelCodeService implements ModelCodeService{
 var dummyModelCodes =[
   {
     id:'mc-001',
-    description:'Work in a single document with teammates or people outside your company. This feature is available for all and free! Invite colleagues to collaborate in the same document at the same time. Suggest edits or make them directly. Chat live with others in Google Docs or include their name in a comment so they receive a notification.',
+    description:'Work in a single document with teammates or people outside your company. This feature is available for all and free! Invite colleagues to collaborate in the same document at the same time. Suggest edits or make them directly. Chat live with others in Google Docs or include their name in a comments so they receive a notification.',
     name:'Home',
     createDate: new Date(),
   },

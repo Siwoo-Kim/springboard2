@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter @Setter @ToString @Builder
 @NoArgsConstructor
@@ -25,7 +26,7 @@ public class ModelCode {
     private LocalDate createDate = LocalDate.now();
 
     @Builder.Default
-    private LocalDate lastUpdatedContent;
+    private LocalDate lastUpdatedContent = LocalDate.now();
 
 
 }

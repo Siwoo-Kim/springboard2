@@ -24,7 +24,7 @@
     <bean class="com.springboard.project.domain.ModelCode"
           id="homeModel"
           p:code="mc-001"
-          p:description="Work in a single document with teammates or people outside your company. This feature is available for all and free! Invite colleagues to collaborate in the same document at the same time. Suggest edits or make them directly. Chat live with others in Google Docs or include their name in a comment so they receive a notification."
+          p:description="Work in a single document with teammates or people outside your company. This feature is available for all and free! Invite colleagues to collaborate in the same document at the same time. Suggest edits or make them directly. Chat live with others in Google Docs or include their name in a comments so they receive a notification."
           p:name="Home"
           p:createDate-ref="createDate"
     />

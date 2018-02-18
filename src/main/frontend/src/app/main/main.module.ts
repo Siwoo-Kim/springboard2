@@ -6,12 +6,14 @@ import {FooterComponent} from "./components/footer/footer.component";
 import {SubHeaderComponent} from "./components/sub-header/sub-header.component";
 import {MainBoardComponent} from "./components/main-board/main-board.component";
 import {RouterModule} from "@angular/router";
+import {StarRatingComponent} from "./components/star-rating/star-rating.component";
 
 const mainComponents = [
   HeaderComponent,
   FooterComponent,
   SubHeaderComponent,
-  MainBoardComponent
+  MainBoardComponent,
+  StarRatingComponent,
 ];
 
 

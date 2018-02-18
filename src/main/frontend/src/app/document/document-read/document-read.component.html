@@ -14,7 +14,7 @@
         <mat-chip color="primary">Post Date: {{ document.postDate.toLocaleDateString() }}</mat-chip>
       </div>
       <div class="col-3 document-data">
-        <mat-chip color="primary">Raiting: <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></mat-chip>
+        <mat-chip color="primary">Raiting: <app-star-rating [rating]="3"></app-star-rating></mat-chip>
       </div>
     </div>
   </div>

@@ -40,7 +40,4 @@ public class Document {
     @Builder.Default
     private int hit = 0;
 
-    @Builder.Default
-    private float rating = 0;
-
 }

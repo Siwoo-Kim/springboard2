@@ -5,11 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.Locale;
 import static org.junit.Assert.*;
 
@@ -24,10 +23,10 @@ public class I18nMessageTest {
     @Test
     public void testErrorMessage(){
 
-        String message = messageSource.getMessage("errors.new.notValid.hit.document",null, Locale.ENGLISH);
+        String message = messageSource.getMessage("errors.new.notValid.document.hit",null, Locale.ENGLISH);
         assertNotNull(message);
         log.warn(message);
-        message = messageSource.getMessage("errors.new.notValid.hit.document",null, Locale.KOREAN);
+        message = messageSource.getMessage("errors.new.notValid.document.hit",null, Locale.KOREAN);
         assertNotNull(message);
         log.warn(message);
 

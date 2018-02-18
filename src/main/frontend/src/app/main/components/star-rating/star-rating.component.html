@@ -1,0 +1,9 @@
+
+<span>
+  <i *ngFor="let star of stars;"
+    class="fa rating-star"
+    [class.fa-star]="star"
+    [class.fa-star-o]="!star"
+  ></i>
+  <span *ngIf="rating"> {{ rating | number : '.0-2'}} Stars</span>
+</span>

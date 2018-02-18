@@ -29,24 +29,24 @@ public class DocumentServiceImplTest {
 
     @Test
     public void post(){
-        Document document1 = createJournal();
+        Document document1 = createDocument();
         BeanPropertyBindingResult errors = new BeanPropertyBindingResult(document1,"journal");
         documentService.post(document1,errors);
 
         assertThat(document1,is(documentRepository.findById(document1.getId()).get()));
         assertThat(errors.hasErrors(),is(false));
 
-        Document document2 = createJournal();
+        Document document2 = createDocument();
         document2.setHit(1);
         documentService.post(document2,errors);
 
         assertThat(errors.hasErrors(),is(true));
-        assertThat("New journal cannot exceed 0",errors.getFieldError("hit").getCode(),is("errors.new.notValid.hit.document"));
+        assertThat("New journal cannot exceed 0",errors.getFieldError("hit").getCode(),is("errors.new.notValid.document.hit"));
     }
 
     @Test(expected = DocumentNotFoundException.class)
     public void getJournal(){
-        Document document1 = createJournal();
+        Document document1 = createDocument();
         documentService.post(document1,new BeanPropertyBindingResult(document1,"journal"));
 
         Document foundDocument1 = documentService.getDocument(document1.getId());
@@ -61,7 +61,7 @@ public class DocumentServiceImplTest {
 
 
 
-    public static Document createJournal() {
+    public static Document createDocument() {
         Document document = new Document();
         document.setTitle("dummy title");
         document.setText("dummy text");
