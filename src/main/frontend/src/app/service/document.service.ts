@@ -10,11 +10,11 @@ import {Document} from "../model/document";
 export class DocumentService {
 
   constructor(public http:Http, @Inject(BACKEND_URL_TOKEN) public backendUrl: string) {
-    console.log('BACKEND_URL_TOKEN : '+this.backendUrl);
+    this.backendUrl+="document/";
   }
 
   postDocument(document: Document): Observable<Document>{
-    return this.http.post(this.backendUrl+"document",document)
+    return this.http.post(this.backendUrl,document)
       .map(response => {
         console.log(response);
           if(response.status === 400){
@@ -25,7 +25,10 @@ export class DocumentService {
   }
 
   documentById(documentId:number): Observable<Document>{
-    return null;
+    return this
+      .http
+      .get(`${this.backendUrl}/${documentId}`)
+      .map(response => { console.log(response); return response.json(); });
   }
 
 }

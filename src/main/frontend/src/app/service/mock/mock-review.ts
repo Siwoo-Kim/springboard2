@@ -6,6 +6,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class MockReviewService implements ReviewService{
+  backendUrl: string;
   http: Http;
 
   getReviewsByDocumentId(documentId: number):Observable<Review[]> {
@@ -13,6 +14,10 @@ export class MockReviewService implements ReviewService{
       .create(
         observer => observer.next( reviews.filter(review => review.document.id == documentId) )
       );
+  }
+
+  addReview(review: Review): Observable<Review> {
+    return undefined;
   }
 
   getReview(id: number):Observable<Review> {

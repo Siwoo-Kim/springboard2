@@ -30,6 +30,7 @@ export class DocumentReadComponent implements OnInit {
     this.documentService
       .documentById(documentId)
       .subscribe(document => {
+        console.log(this.document);
         this.document = document;
       });
 

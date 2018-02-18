@@ -46,16 +46,25 @@ const qa_services = [
   ],
   providers: [
     {provide: BACKEND_URL_TOKEN, useValue: '/api/'},
-    {provide:DocumentService, useClass: MockDocumentService },
-    {provide:ModelCodeService, useClass: MockModelCodeService},
-    {provide:ReviewService, useClass: MockReviewService},
+    {provide:DocumentService, useClass: DocumentService },
+    {provide:ModelCodeService, useClass: ModelCodeService},
+    {provide:ReviewService, useClass: ReviewService},
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
+/*
+MOCK SERVICES
+
+  {provide:DocumentService, useClass: MockDocumentService },
+  {provide:ModelCodeService, useClass: MockModelCodeService},
+  {provide:ReviewService, useClass: MockReviewService},
+*/
 
 /*
-{provide:DocumentService, useClass: DocumentService },
-{provide:ModelCodeService, useClass: ModelCodeService}
+DEV SERVICES
+  {provide:DocumentService, useClass: DocumentService },
+  {provide:ModelCodeService, useClass: ModelCodeService},
+  {provide:ReviewService, useClass: ReviewService},
 */

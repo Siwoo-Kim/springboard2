@@ -8,7 +8,7 @@ import {ErrorCode} from "../../../model/error-code";
   templateUrl: './sub-header.component.html',
   styleUrls: ['./sub-header.component.css']
 })
-export class SubHeaderComponent {
+export class SubHeaderComponent implements OnInit{
   pageName: string = 'Home' ;
   pageDescription: string = 'Dummy description';
   @Input() codeName: string;
@@ -17,12 +17,16 @@ export class SubHeaderComponent {
 
   constructor(public modelCodeService: ModelCodeService){
 
-    this.modelCodeService.modelCodeByName('home').subscribe(modelCode => {this.modelCode = modelCode})
+  }
+
+
+  ngOnInit(): void {
+    this.modelCodeService.modelCodeByName('home').subscribe(modelCode => {this.modelCode = modelCode});
 
     this.modelCodeService.onChangeModelEmitter.subscribe(
       name => {
-        console.log(name);
-        this.codeName = name; this.fetchModelCode(); }
+        this.codeName = name; this.fetchModelCode();
+      }
     )
   }
 

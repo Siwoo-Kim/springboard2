@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.Errors;
 
+import java.time.LocalDate;
+
 @Validator
 public class DocumentValidatorImpl implements DocumentValidator {
 
@@ -27,6 +29,10 @@ public class DocumentValidatorImpl implements DocumentValidator {
         }
         if(document.getHit() > 0){
             errors.rejectValue("hit","errors.new.notValid.document.hit",null);
+        }
+        /* if the postDate is empty set the current time */
+        if(ObjectUtils.isEmpty(document.getPostDate())){
+            document.setPostDate(LocalDate.now());
         }
     }
 }
