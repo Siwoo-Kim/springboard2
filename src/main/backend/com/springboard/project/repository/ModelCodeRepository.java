@@ -11,5 +11,5 @@ public interface ModelCodeRepository {
     ModelCode findByCode(String code);
     List<ModelCode> findAll();
     ModelCode findByName(String name);
-
+    boolean existsByName(String name);
 }

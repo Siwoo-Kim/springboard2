@@ -22,4 +22,5 @@ public class DocumentController {
         model.addAttribute(documentService.getDocuments());
         return listView;
     }
+
 }

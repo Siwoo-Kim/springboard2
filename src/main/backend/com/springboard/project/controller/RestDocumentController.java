@@ -1,24 +1,16 @@
 package com.springboard.project.controller;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.springboard.project.domain.Document;
 import com.springboard.project.domain.ErrorCode;
 import com.springboard.project.service.DocumentService;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.extern.java.Log;
-import org.apache.tomcat.jni.Local;
-import org.dom4j.DocumentException;
-import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.BindingResultUtils;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -44,8 +36,12 @@ public class RestDocumentController extends AbstractController {
     }
 
     @GetMapping
-    public List<Document> getDocuments(){
-        return documentService.getDocuments();
+    public Object getDocuments(
+            @PageableDefault(size = 8,page = 0,direction = Sort.Direction.DESC,sort = "postDate") Pageable pageable
+            ){
+        log.warning(pageable.toString());
+        BeanPropertyBindingResult errors = new BeanPropertyBindingResult(pageable,"pageable");
+        return documentService.getDocuments(pageable,errors);
     }
 
     @PostMapping
@@ -66,3 +62,17 @@ public class RestDocumentController extends AbstractController {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

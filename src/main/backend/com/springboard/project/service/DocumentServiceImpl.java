@@ -3,7 +3,10 @@ package com.springboard.project.service;
 import com.springboard.project.domain.Document;
 import com.springboard.project.repository.DocumentRepository;
 import com.springboard.project.validator.DocumentValidator;
+import com.springboard.project.validator.PageValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
@@ -17,6 +20,10 @@ public class DocumentServiceImpl implements DocumentService {
     DocumentValidator documentValidator;
     @Autowired
     DocumentRepository documentRepository;
+    @Autowired
+    PageValidator pageValidator;
+
+    private Class domainClass = Document.class;
 
     @Override @Transactional(readOnly = false)
     public Document post(Document document, Errors errors) {
@@ -25,6 +32,14 @@ public class DocumentServiceImpl implements DocumentService {
         boolean valid = !errors.hasErrors();
         if(valid){ documentRepository.save(document); };
         return document;
+    }
+
+    /*if pageable is not valid, return null, otherwise retrieve data*/
+    @Override
+    public Page<Document> getDocuments(Pageable pageable, Errors errors) {
+        pageValidator.validatePage(pageable,errors,domainClass);
+        boolean valid = !errors.hasErrors();
+        return valid ? documentRepository.findAll(pageable) : null;
     }
 
     @Override @Transactional(readOnly = false)
@@ -48,4 +63,5 @@ public class DocumentServiceImpl implements DocumentService {
     public List<Document> getDocuments() {
         return documentRepository.findAll();
     }
+
 }
