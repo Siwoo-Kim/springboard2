@@ -11,6 +11,7 @@ public interface ReviewService {
     Review addReview(Review review, Errors errors);
     void removeReview(Long id);
     List<Review> getReviewByDocumentId(Long documentId);
+    Double getDocumentRating(Long documentId);
     Review getReview(Long id);
 
 }

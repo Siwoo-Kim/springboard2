@@ -77,8 +77,8 @@ public class ReviewServiceImplTest {
         entityManager.persist(member);
 
         List<Review> reviews = createReviews(document,member);
-
         reviewRepository.saveAll(reviews);
+
         List<Review> foundReview = reviewService.getReviewByDocumentId(document.getId());
         assertNotNull(foundReview);
         assertThat(foundReview.size(),is(5));
@@ -87,6 +87,21 @@ public class ReviewServiceImplTest {
 
     }
 
+    @Test
+    public void testGetDocumentRating(){
+        Document document = createDocument();
+        documentRepository.save(document);
+        Member member = new Member();
+        entityManager.persist(member);
+
+        List<Review> reviews = createReviews(document,member);
+        Double sum = reviews.stream().map(Review::getRating).reduce(0,(v1,v2)->v1+v2).doubleValue();
+        reviewRepository.saveAll(reviews);
+
+        log.warn(reviewService.getDocumentRating(document.getId())+"");
+        assertThat( reviewService.getDocumentRating(document.getId()),is(sum/reviews.size()) );
+
+    }
 
 
     public static List<Review> createReviews(Document document, Member member){

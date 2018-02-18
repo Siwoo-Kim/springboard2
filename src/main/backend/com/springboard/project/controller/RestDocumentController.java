@@ -1,5 +1,6 @@
 package com.springboard.project.controller;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.springboard.project.domain.Document;
 import com.springboard.project.domain.ErrorCode;
 import com.springboard.project.service.DocumentService;
@@ -13,6 +14,8 @@ import org.dom4j.DocumentException;
 import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.BindingResultUtils;
 import org.springframework.validation.Errors;
@@ -29,7 +32,7 @@ import java.util.Locale;
 @Log
 @RestController
 @RequestMapping("/api/document")
-public class RestDocumentController {
+public class RestDocumentController extends AbstractController {
 
     @Autowired
     DocumentService documentService;
@@ -61,15 +64,5 @@ public class RestDocumentController {
         return savedDocument;
     }
 
-    public List<ErrorCode> handleErrors(Errors errors,Locale locale) {
-        List<ErrorCode> errorCodes = new ArrayList<>();
-        errors.getAllErrors().forEach(error -> {
-            ErrorCode errorCode = errorCodeProvider.get();
-            errorCode.setLocale(locale);
-            errorCode.setErrorCode(error.getCode());
-            errorCode.setMessage(error.getDefaultMessage());
-            errorCodes.add(errorCode);
-        });
-        return errorCodes;
-    }
+
 }

@@ -1,6 +1,7 @@
 package com.springboard.project.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboard.project.exception.ReviewRatingException;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -39,9 +40,10 @@ public class Review {
 
     private LocalDateTime created = LocalDateTime.now();
 
-    @Column
-    private int rating = 0;
 
+    private Integer rating = 0;
+
+    @JsonIgnoreProperties
     public void setRating(int rating){
         if(rating < 0 || rating > 5){
             throw new ReviewRatingException("Review[rating:"+rating+"] not valid","errors.invalid.review.rating");

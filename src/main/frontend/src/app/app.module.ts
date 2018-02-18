@@ -12,6 +12,8 @@ import {ToastModule} from "ng2-toastr";
 import {MockDocumentService} from "./service/mock/mock-document.service";
 import {ModelCodeService} from "./service/model-code.service";
 import {MockModelCodeService} from "./service/mock/mock-model-code.service";
+import {ReviewService} from "./service/review.service";
+import {MockReviewService} from "./service/mock/mock-review";
 
 const dev_services = [
   MockDocumentService,
@@ -45,7 +47,8 @@ const qa_services = [
   providers: [
     {provide: BACKEND_URL_TOKEN, useValue: '/api/'},
     {provide:DocumentService, useClass: MockDocumentService },
-    {provide:ModelCodeService, useClass: MockModelCodeService}
+    {provide:ModelCodeService, useClass: MockModelCodeService},
+    {provide:ReviewService, useClass: MockReviewService},
   ],
   bootstrap: [AppComponent]
 })

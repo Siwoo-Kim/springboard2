@@ -2,6 +2,7 @@ package com.springboard.project.service;
 
 import com.springboard.project.domain.Review;
 import com.springboard.project.repository.ReviewRepository;
+import com.springboard.project.validator.DocumentValidator;
 import com.springboard.project.validator.ReviewValdiator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class ReviewServiceImpl implements ReviewService{
 
     @Autowired ReviewRepository reviewRepository;
     @Autowired DocumentService documentService;
+    @Autowired DocumentValidator documentValidator;
     @Autowired ReviewValdiator reviewValdiator;
 
     @Override @Transactional(readOnly = false)
@@ -35,6 +37,12 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public List<Review> getReviewByDocumentId(Long documentId) {
         return reviewRepository.findByDocumentId(documentId);
+    }
+
+    @Override
+    public Double getDocumentRating(Long documentId) {
+        documentValidator.validateId(documentId);
+        return reviewRepository.findRatingByDocumentId(documentId);
     }
 
     @Override
