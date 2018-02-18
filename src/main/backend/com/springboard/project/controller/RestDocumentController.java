@@ -37,11 +37,20 @@ public class RestDocumentController extends AbstractController {
 
     @GetMapping
     public Object getDocuments(
-            @PageableDefault(size = 8,page = 0,direction = Sort.Direction.DESC,sort = "postDate") Pageable pageable
+            @PageableDefault(
+                    size = 8,
+                    page = 0,
+                    direction = Sort.Direction.DESC,
+                    sort = {"postDate","id"})
+            Pageable pageable,
+            Locale locale
             ){
         log.warning(pageable.toString());
         BeanPropertyBindingResult errors = new BeanPropertyBindingResult(pageable,"pageable");
-        return documentService.getDocuments(pageable,errors);
+        Page<Document> documentPage = documentService.getDocuments(pageable,errors);
+
+        if(!errors.hasErrors()){ return documentPage; }
+        return handleErrors(errors,locale);
     }
 
     @PostMapping
