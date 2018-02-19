@@ -1,0 +1,16 @@
+<div class="side-wrapper col-1" *ngIf="hideSidebar;else showSidebarBtn">
+  <app-document-sidebar (hideSidebarEmitter)="hideSidebar=false" ></app-document-sidebar>
+</div>
+<ng-template class="side-wrapper col-1" #showSidebarBtn>
+  <div class="side-wrapper-btn col-0.5">
+    <button
+      mat-raised-button
+      (click)="hideSidebar = !hideSidebar"
+      color="primary"
+    ><i class="fa fa-arrow-right"></i></button>
+  </div>
+</ng-template>
+<div class="document-main-wrapper">
+  <router-outlet></router-outlet>
+</div>
+

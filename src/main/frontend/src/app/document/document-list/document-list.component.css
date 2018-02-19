@@ -1,0 +1,42 @@
+
+.document-list-wrapper{
+  background-color: #fafafa;
+  color: rgba(0,0,0,.87);
+  width: 100%;
+}
+
+.feature-header{
+  text-align: center;
+  border-top: 4px solid #4143ba;
+}
+
+.text-headline{
+  font-size: 20px;
+  font-weight: 500;
+  color: #1976d2;
+  margin-top: 10px;
+  text-transform: uppercase
+}
+
+.document-title{
+  font-family: 'Nanum Pen Script', cursiv;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 8px 0;
+  clear: both;
+}
+.document{
+  font-family: 'Roboto Mono', monospace;
+  font-size: 19px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: .3px;
+  padding-bottom: 34px;
+  margin-top: 29px;
+
+  border: 1px solid #e2e2e2;
+}
+
+.document button{
+  margin-top: 25px;
+}

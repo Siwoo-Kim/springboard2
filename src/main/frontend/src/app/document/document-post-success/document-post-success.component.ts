@@ -6,16 +6,13 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './document-post-success.component.html',
   styleUrls: ['./document-post-success.component.css']
 })
-export class DocumentPostSuccessComponent implements OnInit {
+export class DocumentPostSuccessComponent {
   documentId: number;
 
   constructor(private route:ActivatedRoute,private router:Router) {
     this.documentId = route.snapshot.params['id'];
     console.log(this.documentId);
 
-  }
-
-  ngOnInit() {
   }
 
   onReadDocument() {

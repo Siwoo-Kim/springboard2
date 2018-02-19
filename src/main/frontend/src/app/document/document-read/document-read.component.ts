@@ -17,14 +17,11 @@ export class DocumentReadComponent implements OnInit {
   rating: number;
 
   constructor(
-    public modelCodeService: ModelCodeService,
     public documentService: DocumentService,
     public reviewService: ReviewService,
     public route: ActivatedRoute) { }
 
   ngOnInit() {
-    /*changing the modelcode to show the page description(modelCode) */
-    this.modelCodeService.codeName='document';
     let documentId = this.route.snapshot.params['id'];
     console.log(documentId);
     this.documentService
