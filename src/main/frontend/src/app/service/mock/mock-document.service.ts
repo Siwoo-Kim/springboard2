@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import {DocumentService} from "../document.service";
-import {Http} from "@angular/http";
+import {Http,Headers} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {Document} from "../../model/document";
+import {Page} from "../../model/page.model";
 
 @Injectable()
 export class MockDocumentService implements DocumentService{
-  http: Http;
-  backendUrl: string;
 
-  constructor(){
-  }
+  /*firebase realdatabase url*/
+  backendUrl: string ='https://springboard2-d5d2b.firebaseio.com/';
+
+  constructor(public http:Http){}
+
+
   postDocument(document: Document): Observable<Document> {
     documents.push(document);
     document.id = documents.length;
@@ -26,6 +29,14 @@ export class MockDocumentService implements DocumentService{
           .filter(document => document.id == documentId)[0] );
     })
   }
+
+  documents(): Observable<Page> {
+    return this.http.get(this.backendUrl+"documents.json",)
+      .map(response => {
+        return Page.toPage(response.json());
+      });
+  }
+
 }
 
 var documents = [

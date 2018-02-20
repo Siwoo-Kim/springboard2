@@ -4,6 +4,7 @@ import {BACKEND_URL_TOKEN} from "../tokens/app-tokens";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import {Document} from "../model/document";
+import {Page} from "../model/page.model";
 
 
 @Injectable()
@@ -31,6 +32,12 @@ export class DocumentService {
       .map(response => { console.log(response); return response.json(); });
   }
 
+  documents(): Observable<Page>{
+    return this
+      .http
+      .get(`${this.backendUrl}`)
+      .map(response => { console.log(response); return Page.toPage(response.json())} );
+  }
 }
 
 

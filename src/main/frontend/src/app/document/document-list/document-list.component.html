@@ -1,38 +1,63 @@
 
 
-<div class="document-list-wrapper">
-  <div class="feature-header">
-    <div class="text-headline"><img src="/assets/img/document/list/document-list-recent.png" height="50" />&nbsp;Most Recent Documents</div>
-  </div>
-  <hr>
-  <div class="document-row row" style="text-align: center">
-    <div class="document col-4">
-      <div class="document-title alert">Title 1</div>
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      <button mat-raised-button color="primary">Detail..</button>
-    </div>
-    <div class="document col-4">
-      <div class="document-title alert">Title 1</div>
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      <button mat-raised-button color="primary">Detail..</button>
-    </div>
-    <div class="document col-4">
-      <div class="document-title alert">Title 1</div>
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      sdfgasdfsadfsadfsadfsadf
-      <button mat-raised-button color="primary">Detail..</button>
-    </div>
-  </div>
+<div class="main-document-list-wrapper">
+  <h1 class="document-list-title">Document List</h1>
+  <p class="document-list-description">
+    Found the document we provide , that is useful for you. And you can search with title by below input!
+    <br/>
+  </p>
 
+  <div class="row-fluid content-container-wrapper guides-section--container">
+    <div class="document-list-searcher">
+      <input
+        matInput
+        autofocus=""
+        class="form-control"
+        placeholder="Find a guide..."
+        [formControl]="searchInput"
+        #myInput
+        (focus)="myInput.style.border = '2px solid #4143ba'"
+        (focusout)="myInput.style.border = ''"
+      />
+    </div>
+
+    <section class="content-container--body" *ngFor="let project of projects;let i = index">
+      <div class="content-section-title--container"  >
+        <h3 class="content-section-title pull-left" ><i class="fa fa-bookmark" aria-hidden="true"></i>
+          {{project.name}}</h3>
+        <hr>
+        <p class="content-section-sub-title"> {{project.description}}</p> <br/>
+      </div>
+
+      <ng-container
+        *ngFor="let document of documents | filter : 'title' : searchTitle ">
+        <div class="guide--container" [attr.data-document]="document.id">
+          <a
+            class="guide--title"
+            [routerLink]="['/document',project.name,document.id]"
+          >
+            <i class="fa fa-file"
+               aria-hidden="true"
+              *ngIf="document.title.indexOf(searchTitle) >= 0;else showDefaultFileFa"
+            ></i>
+            <ng-template
+              #showDefaultFileFa>
+              <i class="fa fa-file-o"
+                 style="color: #4143ba;"
+                 aria-hidden="true"
+              ></i>
+            </ng-template>
+
+             {{  document.title }}
+          </a>
+          <p class="guide--subtitle">{{document.text}}</p>
+        </div>
+      </ng-container>
+    </section>
+
+    <button class="content-cotainer-btns" mat-raised-button  color="primary" [disabled]="page.first" ><i class="fa fa-arrow-left"></i>&nbsp;Previous</button>
+    <button class="content-cotainer-btns" mat-raised-button  color="primary" [disabled]="page.last" >Next&nbsp;<i class="fa fa-arrow-right"></i></button>
+
+
+  </div>
 </div>

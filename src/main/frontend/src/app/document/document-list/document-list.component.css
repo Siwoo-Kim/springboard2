@@ -1,42 +1,86 @@
 
-.document-list-wrapper{
-  background-color: #fafafa;
-  color: rgba(0,0,0,.87);
-  width: 100%;
-}
-
-.feature-header{
-  text-align: center;
-  border-top: 4px solid #4143ba;
-}
-
-.text-headline{
-  font-size: 20px;
-  font-weight: 500;
-  color: #1976d2;
-  margin-top: 10px;
-  text-transform: uppercase
-}
-
-.document-title{
+.main-document-list-wrapper {
+  margin-top: 42px;
+  margin-bottom: 40px;
   font-family: 'Nanum Pen Script', cursiv;
+  font-size: 26px;
+}
+
+.document-list-title {
+  display: inline-block;
+  border-top: 3px solid #4143ba;
+  line-height: 12px;
+  text-transform: uppercase;
+  padding-top: 8px;
+  position: absolute;
+  margin-top: -30px;
+}
+
+.document-list-description{
+  padding-top: 15px;
+  line-height: 22px;
+  margin: 30px 0 60px;
+}
+.fa{
+  color: #4143ba;
+}
+
+.fa-file{
+  color: #4143ba;
+  border-bottom: 2px solid #4142b4;
+  padding-bottom: 5px
+}
+
+.content-container-wrapper {
+  border-top: 1px solid #4143ba;
+  border-bottom: 1px solid #4143ba;
+  min-height: 284px;
+  margin-top: 50px;
+  display: block !important;
+}
+.content-section-sub-title{
+  text-align: center;
+}
+
+.document-list-searcher{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.document-list-searcher input{
+  font-size: 18px;
+}
+
+.content-section-title{
+  margin: 7px;
+}
+
+p.content-section-title{
+  font-size: 16px;
+}
+
+h3.content-section-title{
   font-size: 22px;
-  font-weight: 500;
-  margin: 8px 0;
-  clear: both;
+  line-height: 10px;
 }
-.document{
+.content-cotainer-btns{
+  border-radius: 5px;
+}
+.guide--container {
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  width: 29.269%;
+  margin: 0 4.06px 20px 0;
+  vertical-align: top;
+}
+.guide--title {
+  font-size: 18px;
+  color: #4142b4;
+  line-height: 22px;
+}
+.guide--subtitle {
   font-family: 'Roboto Mono', monospace;
-  font-size: 19px;
-  line-height: 24px;
-  font-weight: 400;
-  letter-spacing: .3px;
-  padding-bottom: 34px;
-  margin-top: 29px;
-
-  border: 1px solid #e2e2e2;
-}
-
-.document button{
-  margin-top: 25px;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 5px;
 }

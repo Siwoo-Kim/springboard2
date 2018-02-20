@@ -7,6 +7,7 @@ import {SubHeaderComponent} from "./components/sub-header/sub-header.component";
 import {MainBoardComponent} from "./components/main-board/main-board.component";
 import {RouterModule} from "@angular/router";
 import {StarRatingComponent} from "./components/star-rating/star-rating.component";
+import {FilterPipe} from "../pipes/filter-pipe.pipe";
 
 const mainComponents = [
   HeaderComponent,
@@ -14,6 +15,7 @@ const mainComponents = [
   SubHeaderComponent,
   MainBoardComponent,
   StarRatingComponent,
+  FilterPipe,
 ];
 
 

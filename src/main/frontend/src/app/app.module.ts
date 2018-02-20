@@ -14,6 +14,8 @@ import {ModelCodeService} from "./service/model-code.service";
 import {MockModelCodeService} from "./service/mock/mock-model-code.service";
 import {ReviewService} from "./service/review.service";
 import {MockReviewService} from "./service/mock/mock-review";
+import { FilterPipe } from './pipes/filter-pipe.pipe';
+import {PageService} from "./service/page.service";
 
 const dev_services = [
   MockDocumentService,
@@ -49,6 +51,7 @@ const qa_services = [
     {provide:DocumentService, useClass: MockDocumentService },
     {provide:ModelCodeService, useClass: MockModelCodeService},
     {provide:ReviewService, useClass: MockReviewService},
+    PageService,
   ],
   bootstrap: [AppComponent]
 })
@@ -56,7 +59,6 @@ export class AppModule { }
 
 /*
 MOCK SERVICES
-
   {provide:DocumentService, useClass: MockDocumentService },
   {provide:ModelCodeService, useClass: MockModelCodeService},
   {provide:ReviewService, useClass: MockReviewService},

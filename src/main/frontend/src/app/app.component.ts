@@ -1,5 +1,7 @@
 import {Component, ViewContainerRef} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
+import {PageService} from "./service/page.service";
+import {Page} from "./model/page.model";
 
 @Component({
   selector: 'app-root',
@@ -15,3 +17,4 @@ export class AppComponent {
   }
 
 }
+
