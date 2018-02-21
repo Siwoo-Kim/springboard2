@@ -12,9 +12,50 @@ mat-toolbar{
   line-height: 1;
   margin: 5px 0 15px 0;
 }
+
 .home-section{
   color: #555;
   font-size: 21px;
   font-weight: 200;
   line-height: 1.4;
+  color: rgba(0,0,0,.54);
+}
+
+mat-divider{
+  border-bottom: 3px solid #4142b4;
+}
+
+.main-intro-wrapper{
+  font-family: 'Nanum Pen Script', cursiv;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  font-size: 1.5em;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+}
+
+.main-intro-title-img{
+
+}
+.main-intro-title{
+  margin-bottom: .5rem;
+  font-size: 3em;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+
+.main-intro-description{
+  font-size: 1.5rem;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  text-align: center;
+}
+
+.mat-intro-description-content button{
+  width: 100%;
 }

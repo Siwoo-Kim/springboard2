@@ -23,7 +23,7 @@
 
     <section class="content-container--body" *ngFor="let project of projects;let i = index">
       <div class="content-section-title--container"  >
-        <h3 class="content-section-title pull-left" ><i class="fa fa-bookmark" aria-hidden="true"></i>
+        <h3 class="content-section-title float-left" ><i class="fa fa-bookmark" aria-hidden="true"></i>
           {{project.name}}</h3>
         <hr>
         <p class="content-section-sub-title"> {{project.description}}</p> <br/>
@@ -36,18 +36,10 @@
             class="guide--title"
             [routerLink]="['/document',project.name,document.id]"
           >
-            <i class="fa fa-file"
-               aria-hidden="true"
-              *ngIf="document.title.indexOf(searchTitle) >= 0;else showDefaultFileFa"
+            <i
+              aria-hidden="true"
+              [ngClass]="getFaFileClass(document.title)"
             ></i>
-            <ng-template
-              #showDefaultFileFa>
-              <i class="fa fa-file-o"
-                 style="color: #4143ba;"
-                 aria-hidden="true"
-              ></i>
-            </ng-template>
-
              {{  document.title }}
           </a>
           <p class="guide--subtitle">{{document.text}}</p>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatChipsModule,
-  MatDialogModule,
+  MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatInputModule, MatSelectModule,
   MatToolbarModule,
@@ -21,6 +21,7 @@ const matModules = [
   MatChipsModule,
   MatTooltipModule,
   MatSelectModule,
+  MatDividerModule,
 ];
 
 /* Exporting material module */

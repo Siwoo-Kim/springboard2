@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DocumentService} from "../../service/document.service";
 import {Document} from "../../model/document.model";
 import {FormControl} from "@angular/forms";
@@ -11,7 +11,7 @@ import {Page} from "../../model/page.model";
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.css']
 })
-export class DocumentListComponent implements OnInit {
+export class DocumentListComponent {
   page: any;
   documents: Document[];
   searchTitle: string;
@@ -36,13 +36,15 @@ export class DocumentListComponent implements OnInit {
     this.searchInput.valueChanges
       .debounceTime(100)
       .subscribe(searhTerm => {
-          this.searchTitle = searhTerm
+          this.searchTitle = searhTerm;
       })
-
   }
 
-
-  ngOnInit() {
+  getFaFileClass(title: string){
+    return (
+      title.length != 0
+      && title.indexOf(this.searchTitle) > 0)
+      ? {'fa' : true, 'fa-file' : true}
+      : {'fa' : true,'fa-file-o' : true};
   }
-
 }

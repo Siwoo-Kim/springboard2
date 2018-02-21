@@ -17,6 +17,7 @@ import {MockReviewService} from "./service/mock/mock-review";
 import { FilterPipe } from './pipes/filter-pipe.pipe';
 import {PageService} from "./service/page.service";
 import { TagNameValidator } from './validators/tag-name-validator.directive';
+import {MatModuleModule} from "./importing-module/mat-module.module";
 
 const dev_services = [
   MockDocumentService,
@@ -46,13 +47,12 @@ const qa_services = [
     MainModule,
     AppRoutingModule,
     DocumentModule,
-
   ],
   providers: [
     {provide: BACKEND_URL_TOKEN, useValue: '/api/'},
-    {provide:DocumentService, useClass: DocumentService },
-    {provide:ModelCodeService, useClass: ModelCodeService},
-    {provide:ReviewService, useClass: ReviewService},
+    {provide:DocumentService, useClass: MockDocumentService },
+    {provide:ModelCodeService, useClass: MockModelCodeService},
+    {provide:ReviewService, useClass: MockReviewService},
     PageService,
   ],
   bootstrap: [AppComponent]
