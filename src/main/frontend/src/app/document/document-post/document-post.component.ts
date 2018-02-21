@@ -1,10 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentService} from "../../service/document.service";
 import {ToastsManager} from "ng2-toastr";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 import {Router} from '@angular/router';
 import {ErrorCode} from "../../model/error-code";
+import {Document} from "../../model/document.model";
+import {tagNameValidator} from "../../validators/tag-name-validator.directive";
 
 @Component({
   selector: 'app-document-post',
@@ -27,16 +28,24 @@ export class DocumentPostComponent {
         Validators.minLength(5)]),
       text: new FormControl('',[
         Validators.required,
-        Validators.minLength(10)
+        Validators.minLength(10),
       ]),
+      tags: new FormControl('', tagNameValidator),
+      secret: new FormControl('',Validators.required)
     });
 
   }
 
   onSubmit(){
+    console.log(this.formGroup.errors);
+
     if(this.formGroup.valid){
       /*hardcoding dummy writer*/
       this.formGroup.value['writer'] = 'anonymous';
+      console.log(this.formGroup.value['tags']);
+
+      this.formGroup.value['tags'] = this.formGroup.value['tags'].split(',').map(Document.deleteFrontHashFromString);
+
 
       this.documentService.postDocument(this.formGroup.value)
         .subscribe(
@@ -59,6 +68,7 @@ export class DocumentPostComponent {
   onReset(){
     this.toastrManager.warning("Hope that you know what you are doing!");
   }
+
 }
 
 

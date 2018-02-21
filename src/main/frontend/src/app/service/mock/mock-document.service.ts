@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {DocumentService} from "../document.service";
 import {Http,Headers} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import {Document} from "../../model/document";
+import {Document} from "../../model/document.model";
 import {Page} from "../../model/page.model";
 
 @Injectable()

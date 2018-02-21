@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import {
-  MatButtonModule, MatChipsModule, MatDialogModule, MatFormFieldModule, MatInputModule,
-  MatToolbarModule
+  MatButtonModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule, MatSelectModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
@@ -14,6 +19,8 @@ const matModules = [
   BrowserAnimationsModule,
   MatDialogModule,
   MatChipsModule,
+  MatTooltipModule,
+  MatSelectModule,
 ];
 
 /* Exporting material module */

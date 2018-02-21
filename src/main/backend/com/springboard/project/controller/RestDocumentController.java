@@ -60,6 +60,7 @@ public class RestDocumentController extends AbstractController {
             HttpServletResponse response,
             Locale locale
     ){
+        log.warning(document::toString);
         Document savedDocument = documentService.post(document,bindingResult);
         if(bindingResult.hasErrors()){
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

@@ -16,6 +16,7 @@ import {ReviewService} from "./service/review.service";
 import {MockReviewService} from "./service/mock/mock-review";
 import { FilterPipe } from './pipes/filter-pipe.pipe';
 import {PageService} from "./service/page.service";
+import { TagNameValidator } from './validators/tag-name-validator.directive';
 
 const dev_services = [
   MockDocumentService,
@@ -29,6 +30,7 @@ const qa_services = [
 @NgModule({
   declarations: [
     AppComponent,
+    TagNameValidator,
 
   ],
   imports: [
@@ -48,9 +50,9 @@ const qa_services = [
   ],
   providers: [
     {provide: BACKEND_URL_TOKEN, useValue: '/api/'},
-    {provide:DocumentService, useClass: MockDocumentService },
-    {provide:ModelCodeService, useClass: MockModelCodeService},
-    {provide:ReviewService, useClass: MockReviewService},
+    {provide:DocumentService, useClass: DocumentService },
+    {provide:ModelCodeService, useClass: ModelCodeService},
+    {provide:ReviewService, useClass: ReviewService},
     PageService,
   ],
   bootstrap: [AppComponent]

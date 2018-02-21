@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DocumentService} from "../../service/document.service";
-import {Document} from "../../model/document";
+import {Document} from "../../model/document.model";
 import {ReviewService} from "../../service/review.service";
 import {Review} from "../../model/review";
 import {ModelCodeService} from "../../service/model-code.service";

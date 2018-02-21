@@ -8,6 +8,10 @@
   font-size: 1.2em;
 }
 
+.post-description{
+  font-family: 'Roboto Mono', monospace;
+  padding: 15px 150px 0px 150px;
+}
 
 mat-form-field{
   width: 70%;
@@ -25,4 +29,10 @@ mat-error{
 .post-text-area{
   padding-bottom: 20px;
   border-bottom: 4px solid #ececec;
+}
+
+mat-form-field.access-select-form{
+  margin: 25px 15px 15px 15px;
+  padding-left: 45px;
+  padding-right: 45px;
 }

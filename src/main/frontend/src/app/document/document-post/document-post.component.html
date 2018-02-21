@@ -3,10 +3,8 @@
 <div class="post-wrapper card">
   <div class="post-header-wrapper" color="primary">
     <mat-toolbar color="primary"><h2><i class="fa fa-crop"></i> Post Form</h2></mat-toolbar>
-    <p class="text-muted">
-      description : blur blur
-      : blur blur
-      : blur blur
+    <p class="text-muted post-description">
+      Create a new document and edit with others at the same time -- from your computer, phone or tablet. Get stuff done with or without an internet connection
     </p>
   </div>
 
@@ -29,6 +27,50 @@
           *ngIf="formGroup.controls['title'].invalid && formGroup.controls['title'].touched"
         >Please enter more than 5 letters</mat-error>
       </mat-form-field>
+      <mat-form-field
+        matTooltip="'TagName enhance your searching engine for document!'"
+        [matTooltipPosition]="'right'">
+        <input
+          matInput
+          type="text"
+          placeholder="#Tags"
+          class="form-control"
+          [formControlName]="'tags'"
+        >
+        <mat-hint> 3 TagName is allowed. &nbsp;
+          <i class="fa fa-hashtag"></i>[tagName1],
+          <i class="fa fa-hashtag"></i>[tagName2],
+          <i class="fa fa-hashtag"></i>[tagName3]</mat-hint>
+        <mat-error
+          *ngIf="formGroup.controls['tags'].invalid
+          && formGroup.controls['tags'].touched"
+        >Please enter valid tagname</mat-error>
+        <mat-error
+          *ngIf="formGroup.controls['tags'].invalid
+          && formGroup.controls['tags'].touched
+          && formGroup.controls['tags'].errors['length']"
+        >Please enter below 3 tagName(inclusive)</mat-error>
+        <mat-error
+          *ngIf="formGroup.controls['tags'].invalid
+          && formGroup.controls['text'].touched
+          && formGroup.controls['tags'].errors['containsHash']"
+        >Remove the <i class="fa fa-hashtag"></i> between letters</mat-error>
+        <mat-error
+          *ngIf="formGroup.controls['tags'].invalid
+          && formGroup.controls['text'].touched
+          && formGroup.controls['tags'].errors['containsSameword']"
+        >Tag name already registered</mat-error>
+      </mat-form-field>
+      <mat-form-field class="access-select-form">
+        <mat-select
+          placeholder="Choose an accessibility of your document"
+          [formControlName]="'secret'"
+        >
+          <mat-option value="true">Private</mat-option>
+          <mat-option value="false">Public</mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <hr>
       <mat-form-field class="post-text-area">
         <textarea

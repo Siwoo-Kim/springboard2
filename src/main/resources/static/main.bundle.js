@@ -104,12 +104,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__service_model_code_service__ = __webpack_require__("../../../../../src/app/service/model-code.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__service_review_service__ = __webpack_require__("../../../../../src/app/service/review.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__service_page_service__ = __webpack_require__("../../../../../src/app/service/page.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__validators_tag_name_validator_directive__ = __webpack_require__("../../../../../src/app/validators/tag-name-validator.directive.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -138,6 +140,7 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__validators_tag_name_validator_directive__["a" /* TagNameValidator */],
             ],
             imports: [
                 /* angular module */
@@ -166,7 +169,6 @@ var AppModule = /** @class */ (function () {
 
 /*
 MOCK SERVICES
-
   {provide:DocumentService, useClass: MockDocumentService },
   {provide:ModelCodeService, useClass: MockModelCodeService},
   {provide:ReviewService, useClass: MockReviewService},
@@ -202,7 +204,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/document/document-list/document-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"main-document-list-wrapper\">\n  <h1 class=\"document-list-title\">Document List</h1>\n  <p class=\"document-list-description\">\n    Found the document we provide , that is useful for you. And you can search with title by below input!\n    <br/>\n  </p>\n\n  <div class=\"row-fluid content-container-wrapper guides-section--container\">\n    <div class=\"document-list-searcher\">\n      <input\n        matInput\n        autofocus=\"\"\n        class=\"form-control\"\n        placeholder=\"Find a guide...\"\n        [formControl]=\"searchInput\"\n        #myInput\n        (focus)=\"myInput.style.border = '2px solid #4143ba'\"\n        (focusout)=\"myInput.style.border = ''\"\n      />\n    </div>\n\n    <section class=\"content-container--body\" *ngFor=\"let project of projects;let i = index\">\n      <div class=\"content-section-title--container\"  >\n        <h3 class=\"content-section-title pull-left\" ><i class=\"fa fa-bookmark\" aria-hidden=\"true\"></i>\n          {{project.name}}</h3>\n        <hr>\n        <p class=\"content-section-sub-title\"> {{project.description}}</p> <br/>\n      </div>\n\n      <ng-container\n        *ngFor=\"let document of documents | filter : 'title' : searchTitle \">\n        <div class=\"guide--container\" [attr.data-document]=\"document.id\">\n          <a\n            class=\"guide--title\"\n            [routerLink]=\"['/document',project.name,document.id]\"\n          >\n            <i class=\"fa fa-file\"\n               aria-hidden=\"true\"\n              *ngIf=\"document.title.indexOf(searchTitle) >= 0;else showDefaultFileFa\"\n            ></i>\n            <ng-template\n              #showDefaultFileFa>\n              <i class=\"fa fa-file-o\"\n                 style=\"color: #4143ba;\"\n                 aria-hidden=\"true\"\n              ></i>\n            </ng-template>\n\n             {{  document.title }}\n          </a>\n          <p class=\"guide--subtitle\">{{document.text}}</p>\n        </div>\n      </ng-container>\n    </section>\n    <button class=\"content-cotainer-btns\" mat-raised-button  color=\"primary\" >Find More</button>\n    <button class=\"content-cotainer-btns\" mat-raised-button color=\"primary\" >Go to Main</button>\n  </div>\n</div>\n"
+module.exports = "\n\n<div class=\"main-document-list-wrapper\">\n  <h1 class=\"document-list-title\">Document List</h1>\n  <p class=\"document-list-description\">\n    Found the document we provide , that is useful for you. And you can search with title by below input!\n    <br/>\n  </p>\n\n  <div class=\"row-fluid content-container-wrapper guides-section--container\">\n    <div class=\"document-list-searcher\">\n      <input\n        matInput\n        autofocus=\"\"\n        class=\"form-control\"\n        placeholder=\"Find a guide...\"\n        [formControl]=\"searchInput\"\n        #myInput\n        (focus)=\"myInput.style.border = '2px solid #4143ba'\"\n        (focusout)=\"myInput.style.border = ''\"\n      />\n    </div>\n\n    <section class=\"content-container--body\" *ngFor=\"let project of projects;let i = index\">\n      <div class=\"content-section-title--container\"  >\n        <h3 class=\"content-section-title pull-left\" ><i class=\"fa fa-bookmark\" aria-hidden=\"true\"></i>\n          {{project.name}}</h3>\n        <hr>\n        <p class=\"content-section-sub-title\"> {{project.description}}</p> <br/>\n      </div>\n\n      <ng-container\n        *ngFor=\"let document of documents | filter : 'title' : searchTitle \">\n        <div class=\"guide--container\" [attr.data-document]=\"document.id\">\n          <a\n            class=\"guide--title\"\n            [routerLink]=\"['/document',project.name,document.id]\"\n          >\n            <i class=\"fa fa-file\"\n               aria-hidden=\"true\"\n              *ngIf=\"document.title.indexOf(searchTitle) >= 0;else showDefaultFileFa\"\n            ></i>\n            <ng-template\n              #showDefaultFileFa>\n              <i class=\"fa fa-file-o\"\n                 style=\"color: #4143ba;\"\n                 aria-hidden=\"true\"\n              ></i>\n            </ng-template>\n\n             {{  document.title }}\n          </a>\n          <p class=\"guide--subtitle\">{{document.text}}</p>\n        </div>\n      </ng-container>\n    </section>\n\n    <button\n      class=\"content-cotainer-btns\"\n      mat-raised-button\n      color=\"primary\"\n      [disabled]=\"page.first\"\n    ><i class=\"fa fa-arrow-left\"></i>&nbsp;Previous</button>\n    <button\n      class=\"content-cotainer-btns\"\n      mat-raised-button\n      color=\"primary\"\n      [disabled]=\"page.last\"\n    >Next&nbsp;<i class=\"fa fa-arrow-right\"></i></button>\n\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -340,7 +342,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\r\n.post-success-wrapper{\r\n  text-align: center;\r\n  padding-top: 60px;\r\n  background: #3f51b5;\r\n  padding-bottom: 60px;\r\n  margin-top: 50px;\r\n}\r\n\r\n.headline{\r\n  font-size: 56px;\r\n  font-weight: 300;\r\n  line-height: 56px;\r\n  margin: 15px 5px;\r\n}\r\n\r\n.sub-headline{\r\n  font-size: 18px;\r\n  font-weight: 300;\r\n  line-height: 28px;\r\n  margin: 15px 0 25px 0;\r\n}\r\n\r\n.btn-group button{\r\n  margin-left: 15px;\r\n  font-size: 15px;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "\r\n.post-success-wrapper{\r\n  text-align: center;\r\n  padding-top: 60px;\r\n  background: #3f51b5;\r\n  padding-bottom: 60px;\r\n  margin-top: 50px;\r\n}\r\n\r\n.headline{\r\n  font-size: 56px;\r\n  font-weight: 300;\r\n  line-height: 56px;\r\n  margin: 15px 5px;\r\n}\r\n\r\n.sub-headline{\r\n  font-size: 18px;\r\n  font-weight: 300;\r\n  line-height: 28px;\r\n  margin: 15px 0 25px 0;\r\n}\r\n\r\n.btn-group button{\r\n  margin-left: 15px;\r\n  font-size: 15px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -410,7 +412,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\r\n\r\n.post-header-wrapper {\r\n  text-align: center;\r\n}\r\n\r\n.post-header-wrapper p{\r\n  font-size: 1.2em;\r\n}\r\n\r\nmat-form-field{\r\n  width: 70%;\r\n}\r\n\r\nmat-error{\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.post-from-wrapper {\r\n  text-align: center;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.post-text-area{\r\n  padding-bottom: 20px;\r\n  border-bottom: 4px solid #ececec;\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n\r\n.post-header-wrapper {\r\n  text-align: center;\r\n}\r\n\r\n.post-header-wrapper p{\r\n  font-size: 1.2em;\r\n}\r\n\r\n.post-description{\r\n  font-family: 'Roboto Mono', monospace;\r\n  padding: 15px 150px 0px 150px;\r\n}\r\n\r\nmat-form-field{\r\n  width: 70%;\r\n}\r\n\r\nmat-error{\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.post-from-wrapper {\r\n  text-align: center;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.post-text-area{\r\n  padding-bottom: 20px;\r\n  border-bottom: 4px solid #ececec;\r\n}\r\n\r\nmat-form-field.access-select-form{\r\n  margin: 25px 15px 15px 15px;\r\n  padding-left: 45px;\r\n  padding-right: 45px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -423,7 +425,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/document/document-post/document-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"post-wrapper card\">\n  <div class=\"post-header-wrapper\" color=\"primary\">\n    <mat-toolbar color=\"primary\"><h2><i class=\"fa fa-crop\"></i> Post Form</h2></mat-toolbar>\n    <p class=\"text-muted\">\n      description : blur blur\n      : blur blur\n      : blur blur\n    </p>\n  </div>\n\n  <div class=\"post-from-wrapper card-body\">\n    <form\n      class=\"form-group\"\n      [formGroup]=\"formGroup\"\n      (ngSubmit)=\"onSubmit()\"\n      (ngResult)=\"onReset()\"\n    >\n      <mat-form-field>\n        <input\n          matInput\n          type=\"text\"\n          placeholder=\"Enter title\"\n          class=\"form-control\"\n          [formControlName]=\"'title'\"\n        >\n        <mat-error\n          *ngIf=\"formGroup.controls['title'].invalid && formGroup.controls['title'].touched\"\n        >Please enter more than 5 letters</mat-error>\n      </mat-form-field>\n      <hr>\n      <mat-form-field class=\"post-text-area\">\n        <textarea\n          matInput\n          rows=\"16\"\n          type=\"text\"\n          placeholder=\"Leave a text...\"\n          [formControlName]=\"'text'\"\n        ></textarea>\n        <mat-error\n          *ngIf=\"formGroup.controls['text'].invalid && formGroup.controls['text'].touched\"\n        >Please enter more than 10 letters</mat-error>\n      </mat-form-field>\n      <hr>\n      <button\n        color=\"primary\"\n        type=\"submit\"\n        mat-raised-button\n        [disabled]=\"formGroup.invalid\"\n        class=\"btn\">Post!</button>\n      <button\n        type=\"reset\"\n        mat-raised-button\n        (click)=\"onReset()\"\n        class=\"btn\">Reset</button>\n    </form>\n  </div>\n</div>\n"
+module.exports = "\n\n<div class=\"post-wrapper card\">\n  <div class=\"post-header-wrapper\" color=\"primary\">\n    <mat-toolbar color=\"primary\"><h2><i class=\"fa fa-crop\"></i> Post Form</h2></mat-toolbar>\n    <p class=\"text-muted post-description\">\n      Create a new document and edit with others at the same time -- from your computer, phone or tablet. Get stuff done with or without an internet connection\n    </p>\n  </div>\n\n  <div class=\"post-from-wrapper card-body\">\n    <form\n      class=\"form-group\"\n      [formGroup]=\"formGroup\"\n      (ngSubmit)=\"onSubmit()\"\n      (ngResult)=\"onReset()\"\n    >\n      <mat-form-field>\n        <input\n          matInput\n          type=\"text\"\n          placeholder=\"Enter title\"\n          class=\"form-control\"\n          [formControlName]=\"'title'\"\n        >\n        <mat-error\n          *ngIf=\"formGroup.controls['title'].invalid && formGroup.controls['title'].touched\"\n        >Please enter more than 5 letters</mat-error>\n      </mat-form-field>\n      <mat-form-field\n        matTooltip=\"'TagName enhance your searching engine for document!'\"\n        [matTooltipPosition]=\"'right'\">\n        <input\n          matInput\n          type=\"text\"\n          placeholder=\"#Tags\"\n          class=\"form-control\"\n          [formControlName]=\"'tags'\"\n        >\n        <mat-hint> 3 TagName is allowed. &nbsp;\n          <i class=\"fa fa-hashtag\"></i>[tagName1],\n          <i class=\"fa fa-hashtag\"></i>[tagName2],\n          <i class=\"fa fa-hashtag\"></i>[tagName3]</mat-hint>\n        <mat-error\n          *ngIf=\"formGroup.controls['tags'].invalid\n          && formGroup.controls['tags'].touched\"\n        >Please enter valid tagname</mat-error>\n        <mat-error\n          *ngIf=\"formGroup.controls['tags'].invalid\n          && formGroup.controls['tags'].touched\n          && formGroup.controls['tags'].errors['length']\"\n        >Please enter below 3 tagName(inclusive)</mat-error>\n        <mat-error\n          *ngIf=\"formGroup.controls['tags'].invalid\n          && formGroup.controls['text'].touched\n          && formGroup.controls['tags'].errors['containsHash']\"\n        >Remove the <i class=\"fa fa-hashtag\"></i> between letters</mat-error>\n        <mat-error\n          *ngIf=\"formGroup.controls['tags'].invalid\n          && formGroup.controls['text'].touched\n          && formGroup.controls['tags'].errors['containsSameword']\"\n        >Tag name already registered</mat-error>\n      </mat-form-field>\n      <mat-form-field class=\"access-select-form\">\n        <mat-select\n          placeholder=\"Choose an accessibility of your document\"\n          [formControlName]=\"'secret'\"\n        >\n          <mat-option value=\"true\">Private</mat-option>\n          <mat-option value=\"false\">Public</mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <hr>\n      <mat-form-field class=\"post-text-area\">\n        <textarea\n          matInput\n          rows=\"16\"\n          type=\"text\"\n          placeholder=\"Leave a text...\"\n          [formControlName]=\"'text'\"\n        ></textarea>\n        <mat-error\n          *ngIf=\"formGroup.controls['text'].invalid && formGroup.controls['text'].touched\"\n        >Please enter more than 10 letters</mat-error>\n      </mat-form-field>\n      <hr>\n      <button\n        color=\"primary\"\n        type=\"submit\"\n        mat-raised-button\n        [disabled]=\"formGroup.invalid\"\n        class=\"btn\">Post!</button>\n      <button\n        type=\"reset\"\n        mat-raised-button\n        (click)=\"onReset()\"\n        class=\"btn\">Reset</button>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -438,6 +440,8 @@ module.exports = "\n\n<div class=\"post-wrapper card\">\n  <div class=\"post-hea
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_toastr__ = __webpack_require__("../../../../ng2-toastr/ng2-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng2_toastr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__model_document_model__ = __webpack_require__("../../../../../src/app/model/document.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__validators_tag_name_validator_directive__ = __webpack_require__("../../../../../src/app/validators/tag-name-validator.directive.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -447,6 +451,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -467,15 +473,20 @@ var DocumentPostComponent = /** @class */ (function () {
             ]),
             text: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["k" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["k" /* Validators */].minLength(10)
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["k" /* Validators */].minLength(10),
             ]),
+            tags: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_6__validators_tag_name_validator_directive__["b" /* tagNameValidator */]),
+            secret: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["k" /* Validators */].required)
         });
     }
     DocumentPostComponent.prototype.onSubmit = function () {
         var _this = this;
+        console.log(this.formGroup.errors);
         if (this.formGroup.valid) {
             /*hardcoding dummy writer*/
             this.formGroup.value['writer'] = 'anonymous';
+            console.log(this.formGroup.value['tags']);
+            this.formGroup.value['tags'] = this.formGroup.value['tags'].split(',').map(__WEBPACK_IMPORTED_MODULE_5__model_document_model__["a" /* Document */].deleteFrontHashFromString);
             this.documentService.postDocument(this.formGroup.value)
                 .subscribe(function (savedDocument) {
                 console.log(savedDocument);
@@ -807,10 +818,12 @@ var matModules = [
     __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatFormFieldModule */],
     __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatInputModule */],
     __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-    __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatToolbarModule */],
+    __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatToolbarModule */],
     __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
     __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatDialogModule */],
     __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatChipsModule */],
+    __WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatTooltipModule */],
+    __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatSelectModule */],
 ];
 /* Exporting material module */
 var MatModuleModule = /** @class */ (function () {
@@ -911,7 +924,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/main/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"header-wrapper d-flex flex-column flex-md-row align-items-center p-3 mb-2 px-md-4 text-white border-bottom box-shadow\">\n  <h1 class=\"my-0 mr-md-auto font-weight-normal\">\n    <a\n      class=\"text-white\"\n      [routerLink]=\"['/home']\"\n    >SW app &nbsp;<i class=\"fa fa-telegram\"></i></a>\n  </h1>\n  <nav class=\"my-2 my-md-0 mr-md-3\">\n    <a\n      class=\"p-2 text-white\"\n      [routerLink]=\"['/home']\"\n      (click)=\"onChangeModel('home')\"\n    >Home</a>\n    <a\n      class=\"p-2 text-white\"\n      [routerLink]=\"['/document/post']\"\n      (click)=\"onChangeModel('document')\"\n    >Document</a>\n    <a\n      class=\"p-2 text-white\"\n      [routerLink]=\"['/document/list']\"\n      (click)=\"onChangeModel('document')\"\n    >Document 1 (TESTING)</a>\n  </nav>\n  <a class=\"btn btn-outline-primary\"\n     color=\"primary\"\n     mat-raised-button\n     (click)=\"onChangeModel('user')\"\n  >Sign up</a>\n  <form class=\"form-inline ml-2 text-white\">\n      <input\n        type=\"text\"\n        class=\"form-control-sm\"\n        placeholder=\"Search Document\"\n      >\n  </form>\n</div>\n"
+module.exports = "\n<div class=\"header-wrapper d-flex flex-column flex-md-row align-items-center p-3 mb-2 px-md-4 text-white border-bottom box-shadow\">\n  <h1 class=\"my-0 mr-md-auto font-weight-normal\">\n    <a\n      class=\"text-white\"\n      [routerLink]=\"['/home']\"\n    >SW app &nbsp;<i class=\"fa fa-telegram\"></i></a>\n  </h1>\n  <nav class=\"my-2 my-md-0 mr-md-3\">\n    <a\n      class=\"p-2 text-white\"\n      [routerLink]=\"['/home']\"\n      (click)=\"onChangeModel('home')\"\n    >Home</a>\n    <a\n      class=\"p-2 text-white\"\n      [routerLink]=\"['/document/post']\"\n      (click)=\"onChangeModel('document')\"\n    >Document</a>\n    <a\n      class=\"p-2 text-white\"\n      [routerLink]=\"['/document/list']\"\n      (click)=\"onChangeModel('document')\"\n    >Document List(Testing)</a>\n  </nav>\n  <a class=\"btn btn-outline-primary\"\n     color=\"primary\"\n     mat-raised-button\n     (click)=\"onChangeModel('user')\"\n  >Sign up</a>\n  <form class=\"form-inline ml-2 text-white\">\n      <input\n        type=\"text\"\n        class=\"form-control-sm\"\n        placeholder=\"Search Document\"\n      >\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -1245,6 +1258,45 @@ var MainModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/model/document.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Document; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__service_date_formatter__ = __webpack_require__("../../../../../src/app/service/date-formatter.ts");
+
+var Document = /** @class */ (function () {
+    function Document(id, title, text, writer, postDate, hit, secret, tagNames) {
+        this.id = id;
+        this.title = title;
+        this.writer = writer;
+        this.postDate = postDate;
+        this.hit = hit;
+        this.secret = secret;
+        this.tagNames = tagNames;
+    }
+    Object.defineProperty(Document.prototype, "postDateStr", {
+        get: function () {
+            return __WEBPACK_IMPORTED_MODULE_0__service_date_formatter__["a" /* DateFormatter */].getlocalDateString(this.postDate);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Document.prototype.addFrontHash = function (str) {
+        return '#' + str;
+    };
+    Document.deleteFrontHashFromString = function (str) {
+        if (str[0] == '#') {
+            return str.slice(1, str.length);
+        }
+    };
+    return Document;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/model/page.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1311,6 +1363,39 @@ var FilterPipe = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/service/date-formatter.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateFormatter; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns_format__ = __webpack_require__("../../../../date-fns/format/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns_parse__ = __webpack_require__("../../../../date-fns/parse/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns_parse___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_date_fns_parse__);
+
+
+var DateFormatter = /** @class */ (function () {
+    function DateFormatter() {
+    }
+    DateFormatter.getlocalDateString = function (date) {
+        return __WEBPACK_IMPORTED_MODULE_0_date_fns_format__(date, DateFormatter.formatLocalDate);
+    };
+    DateFormatter.getlocalDateTimeString = function (dateTime) {
+        return __WEBPACK_IMPORTED_MODULE_0_date_fns_format__(dateTime, DateFormatter.formatLocalDateTime);
+    };
+    DateFormatter.getlocalDate = function (dateString) {
+        console.log(dateString);
+        return __WEBPACK_IMPORTED_MODULE_1_date_fns_parse__(dateString);
+    };
+    DateFormatter.formatLocalDate = 'YYYY-MM-DD';
+    DateFormatter.formatLocalDateTime = 'YYYY/MM/DD HH:mm:ss';
+    return DateFormatter;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/service/document.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1345,6 +1430,7 @@ var DocumentService = /** @class */ (function () {
         this.backendUrl += "document/";
     }
     DocumentService.prototype.postDocument = function (document) {
+        console.log(document);
         return this.http.post(this.backendUrl, document)
             .map(function (response) {
             console.log(response);
@@ -1385,7 +1471,9 @@ var documents = [];
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MockDocumentService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_page_model__ = __webpack_require__("../../../../../src/app/model/page.model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1397,28 +1485,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var MockDocumentService = /** @class */ (function () {
-    function MockDocumentService() {
+    function MockDocumentService(http) {
+        this.http = http;
+        /*firebase realdatabase url*/
+        this.backendUrl = 'https://springboard2-d5d2b.firebaseio.com/';
     }
     MockDocumentService.prototype.postDocument = function (document) {
         documents.push(document);
         document.id = documents.length;
-        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].create(function (observer) {
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].create(function (observer) {
             observer.next(document);
         });
     };
     MockDocumentService.prototype.documentById = function (documentId) {
-        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].create(function (observer) {
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].create(function (observer) {
             observer.next(documents
                 .filter(function (document) { return document.id == documentId; })[0]);
         });
     };
     MockDocumentService.prototype.documents = function () {
-        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].create(function (observer) { observer.next({ content: documents, }); });
+        return this.http.get(this.backendUrl + "documents.json")
+            .map(function (response) {
+            return __WEBPACK_IMPORTED_MODULE_3__model_page_model__["a" /* Page */].toPage(response.json());
+        });
     };
     MockDocumentService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], MockDocumentService);
     return MockDocumentService;
 }());
@@ -1727,6 +1823,96 @@ var ReviewService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 
 var BACKEND_URL_TOKEN = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["InjectionToken"]("Backend Url");
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/validators/tag-name-validator.directive.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TagNameValidator; });
+/* harmony export (immutable) */ __webpack_exports__["b"] = tagNameValidator;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var tagName_VALIDATOR = {
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* NG_VALIDATORS */],
+    useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return TagNameValidator; }),
+    multi: true
+};
+var TagNameValidator = /** @class */ (function () {
+    function TagNameValidator() {
+    }
+    TagNameValidator.prototype.validate = function (_a) {
+        var value = _a.value;
+        var strings = value.split(",");
+        console.log(strings);
+        console.log(strings.length);
+        var error = { 'tagName': true };
+        if (!strings)
+            return;
+        if (strings.length > 3)
+            return error;
+        for (var _i = 0, strings_1 = strings; _i < strings_1.length; _i++) {
+            var string = strings_1[_i];
+            var pattern = /^#[a-zA-Z]+/g;
+            var inValid = !pattern.test(string);
+            if (inValid)
+                return error;
+        }
+        return null;
+    };
+    TagNameValidator = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: 'input[tagName]',
+            providers: [tagName_VALIDATOR]
+        })
+    ], TagNameValidator);
+    return TagNameValidator;
+}());
+
+function tagNameValidator(_a) {
+    var value = _a.value;
+    var strings = value.split(",");
+    var error = { 'tagName': true };
+    if (!strings)
+        return;
+    if (strings.length > 3) {
+        error['length'] = true;
+        return error;
+    }
+    ;
+    var _loop_1 = function (str) {
+        var pattern = /^#[a-zA-Z^\#]+/g;
+        var inValid = !pattern.test(str);
+        var str2 = str.slice(1, str.length);
+        var containsHash = str2.indexOf('#') > 0;
+        var containsSameWord = strings.filter(function (filter) { return filter === str; }).length > 1;
+        if (containsHash) {
+            error['containsHash'] = true;
+        }
+        if (containsSameWord) {
+            error['containsSameword'] = true;
+        }
+        if (inValid || containsHash || containsSameWord)
+            return { value: error };
+    };
+    for (var _i = 0, strings_2 = strings; _i < strings_2.length; _i++) {
+        var str = strings_2[_i];
+        var state_1 = _loop_1(str);
+        if (typeof state_1 === "object")
+            return state_1.value;
+    }
+    return null;
+}
 
 
 /***/ }),

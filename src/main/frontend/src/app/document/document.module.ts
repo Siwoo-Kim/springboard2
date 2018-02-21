@@ -11,6 +11,7 @@ import {DocumentListComponent} from "./document-list/document-list.component";
 import {DocumentMainComponent} from "./document-main/document-main.component";
 import {RouterModule} from "@angular/router";
 import {DocumentSidebarComponent} from "./document-sidebar/document-sidebar.component";
+import {TagNameValidator} from "../validators/tag-name-validator.directive";
 
 const documentComponents = [
   DocumentSidebarComponent,

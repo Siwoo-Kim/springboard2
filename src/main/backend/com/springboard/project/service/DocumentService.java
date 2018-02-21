@@ -13,7 +13,9 @@ public interface DocumentService {
     Document post(Document document, Errors errors);
     Document edit(Document document, Errors errors);
     Document getDocument(Long id);
-    void deleteById(Long id,Errors errors);
+    List<Document> getDocumentByTagName(String tagName, Errors errors);
+
+    void deleteById(Long id, Errors errors);
     List<Document> getDocuments();
     /*if pageable is not valid, return null, otherwise retrieve data*/
     Page<Document> getDocuments(Pageable pageable, Errors errors);

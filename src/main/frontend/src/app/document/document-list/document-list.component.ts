@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DocumentService} from "../../service/document.service";
-import {Document} from "../../model/document";
+import {Document} from "../../model/document.model";
 import {FormControl} from "@angular/forms";
 import 'rxjs/Rx';
 import {debounceTime} from "rxjs/operators";

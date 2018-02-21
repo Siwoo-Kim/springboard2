@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 
 import java.util.List;
@@ -52,6 +53,16 @@ public class DocumentServiceImpl implements DocumentService {
     public Document getDocument(Long id) {
         documentValidator.validateId(id);
         return documentRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Document> getDocumentByTagName(String tagName, Errors errors) {
+        boolean valid = false;
+
+        if(StringUtils.hasText(tagName)){
+//            List<Document> documents = documentRepository.findByTagName();
+        }
+        return null;
     }
 
     @Override

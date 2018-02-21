@@ -3,7 +3,7 @@ import {Http} from "@angular/http";
 import {BACKEND_URL_TOKEN} from "../tokens/app-tokens";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
-import {Document} from "../model/document";
+import {Document} from "../model/document.model";
 import {Page} from "../model/page.model";
 
 
@@ -15,6 +15,7 @@ export class DocumentService {
   }
 
   postDocument(document: Document): Observable<Document>{
+    console.log(document);
     return this.http.post(this.backendUrl,document)
       .map(response => {
         console.log(response);
